@@ -1,0 +1,21 @@
+{
+  "name": "beyond88/ultimate-image-slider",
+  "description": "Easily create and customize beautiful, responsive image slideshows for your WordPress site.",
+  "autoload": {
+    "psr-4": {
+      "UltimateImageSlider\\": "includes/"
+    },
+    "files": [
+      "includes/functions.php"
+    ]
+  },
+  "authors": [
+    {
+      "name": "Mohiuddin Abdul Kader",
+      "email": "muhin.cse.diu@gmail.com"
+    }
+  ],
+  "minimum-stability": "dev",
+  "require": {
+  }
+}
