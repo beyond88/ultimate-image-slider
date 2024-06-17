@@ -1,5 +1,6 @@
 <?php
 namespace UltimateImageSlider\Frontend;
+// use UltimateImageSlider\Frontend\Shortcodes;
 
 /**
  * Shortcode handler class
@@ -15,6 +16,6 @@ class Shortcode {
      * @return  void
      */
     function __construct() {
-        new MySlideShow();
+        new Shortcodes\MySlideShow();
     }
 }

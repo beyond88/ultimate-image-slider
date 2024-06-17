@@ -53,7 +53,7 @@ final class UltimateImageSlider
     /**
      * Initializes a singleton instance
      *
-     * @return \OrderDetect
+     * @return \Ultimate Image Slider
      */
     public static function init()
     {

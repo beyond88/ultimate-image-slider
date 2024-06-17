@@ -1,8 +1,6 @@
 <?php
 namespace UltimateImageSlider\Admin;
 
-use OrderDetect\Helper;
-
 /**
  * The Menu handler class
  */
