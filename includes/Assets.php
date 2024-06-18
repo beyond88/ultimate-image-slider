@@ -137,6 +137,10 @@ class Assets
         $tab = isset($_GET['tab']) ? $_GET['tab'] : '';
         $section = isset($_GET['section']) ? $_GET['section'] : '';
 
+        wp_enqueue_media();
+        wp_enqueue_script( 'jquery-ui-core' );
+        wp_enqueue_script( 'jquery-ui-sortable' );
+
         $scripts = $this->get_admin_scripts();
         $styles  = $this->get_admin_styles();
 
@@ -156,6 +160,9 @@ class Assets
         wp_localize_script('ultimate-image-slider-admin-script', 'ultimate_image_slider', array(
             'ajax_url'  => admin_url('admin-ajax.php'),
             'nonce' => wp_create_nonce('ultimate-image-slider-admin-nonce'),
+            'slider_preview' => ULTIMATE_IMAGE_SLIDER_ASSETS . '/images/image-preview.svg',
+            'slider_heading_placeholder' => __('Enter slider heading', 'ultimate-image-slider'),
+            'slider_desc_placeholder' => __('Enter slider description', 'ultimate-image-slider')
         ));
     }
 }

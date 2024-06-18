@@ -38,21 +38,6 @@
   border-radius: 2px;
 }
 
-.uis-settings-wrap button {
-  /* padding: 19px 39px 18px 39px; */
-  /* color: #fff; */
-  /* background-color: #4bc970; */
-  /* font-size: 18px; */
-  /* text-align: center; */
-  /* font-style: normal; */
-  /* border-radius: 5px; */
-  /* width: 100%; */
-  /* border: 1px solid #3ac162; */
-  /* border-width: 1px 1px 3px; */
-  /* box-shadow: 0 -1px 0 rgba(255, 255, 255, 0.1) inset; */
-  /* margin-bottom: 10px; */
-}
-
 .uis-settings-wrap fieldset {
   margin-bottom: 30px;
   border: none;
@@ -318,26 +303,6 @@ h2.uis-meta-section-title .uis-section-reset {
   color: #ef4144;
 }
 
-.uis-group-field-add {
-  background-color: #5f7eff;
-  color: #fff;
-  border: none;
-  box-shadow: 0 3px 6px rgba(95, 126, 255, 0.5);
-  text-shadow: none;
-  cursor: pointer;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-}
-
-.uis-group-field-add:hover {
-  box-shadow: 0 3px 6px rgba(95, 126, 255, 0.8);
-}
-
-.uis-group-field-add > span {
-  line-height: 23px;
-}
-
 /* Add this attribute to the element that needs a tooltip */
 [data-tooltip] {
   position: relative;
@@ -371,31 +336,6 @@ h2.uis-meta-section-title .uis-section-reset {
   font-size: 12px;
   line-height: 1.2;
   z-index: 9999;
-}
-
-/* Triangle hack to make tooltip look like a speech bubble */
-[data-tooltip]:after {
-  position: absolute;
-  bottom: 150%;
-  left: 50%;
-  margin-left: -5px;
-  width: 0;
-  border-top: 5px solid #000;
-  border-top: 5px solid hsla(0, 0%, 20%, 0.9);
-  border-right: 5px solid transparent;
-  border-left: 5px solid transparent;
-  content: " ";
-  font-size: 0;
-  line-height: 0;
-}
-
-/* Show tooltip content on hover */
-[data-tooltip]:hover:before,
-[data-tooltip]:hover:after {
-  visibility: visible;
-  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
-  filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=100);
-  opacity: 1;
 }
 
 .uis-info-message-wrapper {
@@ -2589,4 +2529,71 @@ body.uis-dark-mode
 
 .uis-slider-img-preview{
   width: 150px;
+  border: 2px dashed #ddd;
+  border-radius: 4px;
+}
+
+.uis-remove-slider-btn {
+  margin-left: 10px;
+  vertical-align: middle;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 1px 5px;
+  color: #f75757;
+  font-size: 20px;
+}
+
+.uis-remove-slider-btn svg {
+  height: 20px;
+  width: 20px;
+}
+
+.uis-remove-slider-btn .st0 {
+  fill: #FF7A96;
+}
+
+.uis-remove-slider-btn:hover .st0 {
+  fill: #f75757;
+}
+
+.uis-click-area-wrapper label>input{
+  display: none;
+}
+
+.uis-click-area-wrapper {
+  position: relative;
+}
+
+.uis-click-overlay {
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 28px;
+  width: 40%;
+}
+
+.uis-click-area-wrapper label .uis-add-field-icon {
+  font-size: 25px;
+  margin-right: 15px;
+}
+
+.uis-group-field-add>span {
+  line-height: 23px;
+}
+
+.uis-up-down-btn{
+  margin-left: 10px;
+  vertical-align: middle;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 1px 5px;
+  /* color: #0042be; */
+  background-color: #fff;
+  font-size: 20px;
+}
+
+.uis-up-down-btn svg {
+  height: 20px;
+  width: 20px;
 }
