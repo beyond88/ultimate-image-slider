@@ -20,18 +20,18 @@
             targetArea.append(`<tr class="uis-field">
                                     <td class="uis-control">
                                         <img src="${ultimate_image_slider.slider_preview}" class="uis-slider-img-preview" alt="">
-                                        <input type="hidden" name="uis-settings[img_id][]" value="">
+                                        <input type="hidden" name="uis_settings[img_id][]">
                                     
                                     </td><td class="uis-control">
                                         <div class="uis-control-wrapper">
                                             <h4>Heading</h4>
-                                            <input type="text" name="uis-settings[slider_heading][]" class="" placeholder="${ultimate_image_slider.slider_heading_placeholder}">
+                                            <input type="text" name="uis_settings[slider_heading][]" placeholder="${ultimate_image_slider.slider_heading_placeholder}">
                                         </div>
                                     </td>
                                     <td class="uis-control">
                                         <div class="uis-control-wrapper">
                                             <h4>Description</h4>
-                                            <textarea name="uis-settings[slider_desc][]" class="" placeholder="${ultimate_image_slider.slider_desc_placeholder}"></textarea>
+                                            <textarea name="uis_settings[slider_desc][]" placeholder="${ultimate_image_slider.slider_desc_placeholder}"></textarea>
                                         </div>
                                     </td>
                                     <td class="uis-control">
@@ -77,6 +77,32 @@
             });
     
             mediaUploader.open();
+        });
+
+        // $(document).ready(function () {
+        //     $('#uis-field-append-body').sortable({
+        //         cursor: 'move',
+        //     });
+        // });
+
+        $('#uis-field-append-body').sortable({
+            cursor: 'move',
+        });
+
+        $('#uis-settings-form').submit(function(event) {
+            var imgSelected = false;
+
+            $('input[name="uis_settings[img_id][]"]').each(function() {
+                if ($(this).val()) {
+                    imgSelected = true;
+                    return false;
+                }
+            });
+
+            if (!imgSelected) {
+                alert(ultimate_image_slider.image_selection_alert);
+                event.preventDefault();
+            }
         });
     }
 

@@ -2531,6 +2531,7 @@ body.uis-dark-mode
   width: 150px;
   border: 2px dashed #ddd;
   border-radius: 4px;
+  cursor: pointer;
 }
 
 .uis-remove-slider-btn {

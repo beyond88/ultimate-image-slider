@@ -162,7 +162,8 @@ class Assets
             'nonce' => wp_create_nonce('ultimate-image-slider-admin-nonce'),
             'slider_preview' => ULTIMATE_IMAGE_SLIDER_ASSETS . '/images/image-preview.svg',
             'slider_heading_placeholder' => __('Enter slider heading', 'ultimate-image-slider'),
-            'slider_desc_placeholder' => __('Enter slider description', 'ultimate-image-slider')
+            'slider_desc_placeholder' => __('Enter slider description', 'ultimate-image-slider'),
+            'image_selection_alert' => __('Please select at least one image.', 'ultimate-image-slider'),
         ));
     }
 }
