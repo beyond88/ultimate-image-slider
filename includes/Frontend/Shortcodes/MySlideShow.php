@@ -17,6 +17,14 @@ class MySlideShow {
      */
     private $atts;
 
+
+    /**
+     * Private attributes
+     * 
+     * @var string
+     */
+    private $sliders;
+
     /**
      * Initialize shortcode
      *
@@ -26,7 +34,8 @@ class MySlideShow {
      * @return  void
      */
     public function __construct() {
-        add_shortcode( 'myslideshow', array( $this, 'my_slide_show_shortcode' ) );
+        $this->sliders = get_option('uis_settings');
+        add_shortcode( 'myslideshow', array( $this, 'render_shortcode' ) );
     }
 
     /**
@@ -37,7 +46,7 @@ class MySlideShow {
      * @param   array
      * @return  string
      */
-    public function my_slide_show_shortcode( $atts ) {
+    public function render_shortcode( $atts ) {
         $this->atts = shortcode_atts( array(
         ), $atts );
 
@@ -54,7 +63,12 @@ class MySlideShow {
      */
     public function output() {
         ob_start();
-        // slider code goes here
+        
+        $template = ULTIMATE_IMAGE_SLIDER_PATH . '/includes/Frontend/views/my-slide-show.php';
+		if ( file_exists( $template ) ) {
+			include $template;
+		}
+
         return ob_get_clean();
     }
 }

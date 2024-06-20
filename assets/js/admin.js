@@ -79,12 +79,6 @@
             mediaUploader.open();
         });
 
-        // $(document).ready(function () {
-        //     $('#uis-field-append-body').sortable({
-        //         cursor: 'move',
-        //     });
-        // });
-
         $('#uis-field-append-body').sortable({
             cursor: 'move',
         });

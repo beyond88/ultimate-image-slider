@@ -45,8 +45,6 @@ class Main {
 		add_action( 'admin_init', array( $this, 'menu_register_settings' ) );
 		add_action( 'uis_settings_header', array( $this, 'header_template' ), 10 );
         add_action( 'uis_settings_footer', array( $this, 'footer_template' ), 10 );
-        // add_action( 'admin_init', array( $this, 'save_slider_settings' ) );
-        
 	}
 
 	/**
@@ -222,46 +220,6 @@ class Main {
             </div>
         </div>
 <?php
-    }
-
-    public function save_slider_settings() {
-        // Check if form is submitted
-        if ( ! isset( $_POST['submit'] ) ) {
-          return;
-        }
-      
-        // Verify nonce for security
-        if ( ! wp_verify_nonce( $_POST['_wpnonce'], 'uis_settings_nonce' ) ) {
-          //throw new \Exception( 'Security check failed.' );
-          return;
-        }
-      
-        $settings = [
-          'img_id' => [],
-          'slider_heading' => sanitize_text_field( $_POST['slider_heading'] ),
-          'slider_desc' => wp_kses_post( $_POST['slider_desc'] ), // Sanitize description
-        ];
-      
-        // Validate image IDs
-        if ( isset( $_POST['uis_settings']['img_id'] ) ) {
-          $image_ids = array_map( 'absint', (array) $_POST['uis_settings']['img_id'] );
-          $settings['img_id'] = array_unique( $image_ids );
-        } else {
-          // Handle empty image IDs
-          add_action( 'admin_notices', function() {
-            echo '<div class="notice notice-error"><p>Please select at least one image for the slider.</p></div>';
-          });
-          return;
-        }
-      
-        // Update settings
-        // update_option( $this->_optionName, $settings );
-      
-        // Success message
-        add_action( 'admin_notices', function() {
-          echo '<div class="notice notice-success"><p>Slider settings saved successfully!</p></div>';
-        });
-    }
-      
+    }  
     
 }

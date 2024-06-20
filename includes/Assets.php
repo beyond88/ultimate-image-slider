@@ -30,12 +30,18 @@ class Assets
      */
     public function get_scripts() {
         return array(
-            'ultimate-image-slider-script' => array(
-                'src'     => ULTIMATE_IMAGE_SLIDER_ASSETS . '/jS/frontend.js',
-                'version' => filemtime(ULTIMATE_IMAGE_SLIDER_PATH . '/assets/jS/frontend.js'),
-                'deps'    => array('jquery'),
-            ),
-        );
+                'ultimate-image-slider-slick' => array(
+                    'src'     => ULTIMATE_IMAGE_SLIDER_ASSETS . '/lib/slick.min.js',
+                    'version' => filemtime(ULTIMATE_IMAGE_SLIDER_PATH . '/assets/lib/slick.min.js'),
+                    'deps'    => array('jquery'),
+                ),
+                'ultimate-image-slider-script' => array(
+                    'src'     => ULTIMATE_IMAGE_SLIDER_ASSETS . '/js/frontend.js',
+                    'version' => filemtime(ULTIMATE_IMAGE_SLIDER_PATH . '/assets/js/frontend.js'),
+                    'deps'    => array('jquery'),
+                
+                ),
+            );
     }
 
     /**
@@ -49,10 +55,9 @@ class Assets
     public function get_styles() {
         return array(
             'ultimate-image-slider-style' => array(
-                'src'     => ULTIMATE_IMAGE_SLIDER_ASSETS . '/css/frontend.css',
-                'version' => filemtime(ULTIMATE_IMAGE_SLIDER_PATH . '/assets/css/frontend.css'),
+                'src'     => ULTIMATE_IMAGE_SLIDER_ASSETS . '/lib/style.css',
+                'version' => filemtime(ULTIMATE_IMAGE_SLIDER_PATH . '/assets/lib/style.css'),
             ),
-
         );
     }
 

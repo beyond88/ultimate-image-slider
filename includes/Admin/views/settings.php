@@ -120,23 +120,3 @@
         </div>
     </div>
 </div>
-
-<script>
-    // jQuery(document).ready(function($) {
-    //     $('#uis-settings-form').submit(function(event) {
-    //         var imgSelected = false;
-
-    //         $('input[name="uis_settings[img_id][]"]').each(function() {
-    //             if ($(this).val()) {
-    //                 imgSelected = true;
-    //                 return false;
-    //             }
-    //         });
-
-    //         if (!imgSelected) {
-    //             alert('Please select at least one image.');
-    //             event.preventDefault();
-    //         }
-    //     });
-    // });
-</script>
