@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Plugin Name: Ultimate Image Slider
  * Description: Easily create and customize beautiful, responsive image slideshows for your WordPress site.
@@ -29,8 +28,7 @@ require_once __DIR__ . '/vendor/autoload.php';
 /**
  * The main plugin class
  */
-final class UltimateImageSlider
-{
+final class UltimateImageSlider {
 
     /**
      * Plugin version
@@ -42,12 +40,11 @@ final class UltimateImageSlider
     /**
      * Class constructor
      */
-    private function __construct()
-    {
+    private function __construct() {
         $this->define_constants();
 
-        register_activation_hook(__FILE__, [$this, 'activate']);
-        add_action('plugins_loaded', [$this, 'init_plugin']);
+        register_activation_hook( __FILE__, array( $this, 'activate' ) );
+        add_action( 'plugins_loaded', array( $this, 'init_plugin') );
     }
 
     /**
@@ -55,8 +52,7 @@ final class UltimateImageSlider
      *
      * @return \Ultimate Image Slider
      */
-    public static function init()
-    {
+    public static function init() {
         static $instance = false;
 
         if (!$instance) {
@@ -71,8 +67,7 @@ final class UltimateImageSlider
      *
      * @return void
      */
-    public function define_constants()
-    {
+    public function define_constants() {
         define('ULTIMATE_IMAGE_SLIDER_VERSION', self::version);
         define('ULTIMATE_IMAGE_SLIDER_FILE', __FILE__);
         define('ULTIMATE_IMAGE_SLIDER_PATH', __DIR__);
@@ -89,8 +84,7 @@ final class UltimateImageSlider
      *
      * @return void
      */
-    public function init_plugin()
-    {
+    public function init_plugin() {
 
         new UltimateImageSlider\Assets();
         new UltimateImageSlider\UltimateImageSlideri18n();
@@ -111,8 +105,7 @@ final class UltimateImageSlider
      *
      * @return void
      */
-    public function activate()
-    {
+    public function activate() {
         $installer = new UltimateImageSlider\Installer();
         $installer->run();
     }
@@ -121,8 +114,7 @@ final class UltimateImageSlider
 /**
  * Initializes the main plugin
  */
-function ultimate_image_slider()
-{
+function ultimate_image_slider() {
     return UltimateImageSlider::init();
 }
 
