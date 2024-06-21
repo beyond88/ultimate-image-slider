@@ -35,7 +35,6 @@ class UltimateImageSlider_Uninstaller {
      * @return void
      */
     private function delete_options() {
-        global $wpdb;
 
         $options = [
             'uis_settings',
