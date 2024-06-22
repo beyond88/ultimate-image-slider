@@ -89,10 +89,6 @@ final class UltimateImageSlider {
         new UltimateImageSlider\Assets();
         new UltimateImageSlider\UltimateImageSlideri18n();
 
-        if (defined('DOING_AJAX') && DOING_AJAX) {
-            new UltimateImageSlider\Ajax();
-        }
-
         if (is_admin()) {
             new UltimateImageSlider\Admin();
         } else {
