@@ -1,9 +1,9 @@
 <?php
 use UltimateImageSlider\Frontend;
 
-class FrontendTest extends WP_UnitTestCase {
+class FrontendTest extends \WP_UnitTestCase {
 
-    public function setUp() {
+    public function setUp(): void {
         parent::setUp();
 
         // Ensure the Frontend\Shortcode class exists

@@ -1,14 +1,18 @@
 <?php
 use UltimateImageSlider\Frontend\Shortcodes\MySlideShow;
 
-class MySlideShowTest extends WP_UnitTestCase {
+class MySlideShowTest extends \WP_UnitTestCase {
 
-    public function setUp() {
+    public function setUp(): void {
         parent::setUp();
 
-        // Mock the get_option function to return a specific value
+        // Mock the get_option function to return a specific value with necessary keys
         add_filter('pre_option_uis_settings', function() {
-            return array('sample_slider_data');
+            return array(
+                'img_id' => array(1, 2, 3), // Example image IDs
+                'slider_heading' => array('Heading 1', 'Heading 2', 'Heading 3'), // Example headings
+                'slider_desc' => array('Description 1', 'Description 2', 'Description 3') // Example descriptions
+            );
         });
 
         // Define necessary constants
@@ -30,8 +34,8 @@ class MySlideShowTest extends WP_UnitTestCase {
         $mySlideShow = new MySlideShow();
 
         // Mock the output method to return a specific value
-        $mock = $this->getMockBuilder('UltimateImageSlider\Frontend\Shortcodes\MySlideShow')
-                     ->setMethods(['output'])
+        $mock = $this->getMockBuilder(MySlideShow::class)
+                     ->onlyMethods(['output'])
                      ->getMock();
         $mock->expects($this->once())
              ->method('output')
@@ -45,21 +49,12 @@ class MySlideShowTest extends WP_UnitTestCase {
     public function test_output_method() {
         $mySlideShow = new MySlideShow();
 
-        // Mock the output buffer functions
-        $this->start_ob();
-        $output = $mySlideShow->output();
-        $this->assertEquals('', $output); // assuming the template file doesn't exist
-
-        // Cleanup
-        $this->end_ob();
-    }
-
-    // Helper methods to mock output buffering
-    private function start_ob() {
+        // Start output buffering
         ob_start();
-    }
+        $output = $mySlideShow->output();
+        $bufferedOutput = ob_get_clean();
 
-    private function end_ob() {
-        ob_end_clean();
+        // Assuming the template file doesn't exist, the output should be empty
+        $this->assertEmpty($bufferedOutput);
     }
 }

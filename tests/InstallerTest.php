@@ -1,12 +1,12 @@
 <?php
 use UltimateImageSlider\Installer;
 
-class InstallerTest extends WP_UnitTestCase {
+class InstallerTest extends \WP_UnitTestCase {
 
     // Define a constant for the plugin version
     const PLUGIN_VERSION = '1.0.0';
 
-    public function setUp() {
+    public function setUp(): void {
         parent::setUp();
 
         // Define the plugin version constant
@@ -19,7 +19,7 @@ class InstallerTest extends WP_UnitTestCase {
         delete_option('ultimate_image_slider_version');
     }
 
-    public function tearDown() {
+    public function tearDown(): void {
         // Cleanup after each test
         delete_option('ultimate_image_slider_installed');
         delete_option('ultimate_image_slider_version');
@@ -57,4 +57,6 @@ class InstallerTest extends WP_UnitTestCase {
         $installed_time = get_option('ultimate_image_slider_installed');
         $this->assertEquals($initial_time, $installed_time, 'The installed time should not be overwritten.');
     }
+
+    
 }

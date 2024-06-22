@@ -1,85 +1,63 @@
 <?php
 use UltimateImageSlider\Admin\Main;
 
-/**
- * Test class for testing the Main class in Ultimate Image Slider plugin.
- */
-class MainTest extends WP_UnitTestCase {
+class MainTest extends \WP_UnitTestCase {
 
-    /**
-     * Instance of the Main class.
-     *
-     * @var Main
-     */
     protected $main;
 
-    /**
-     * Set up the test environment.
-     */
     public function setUp(): void {
         parent::setUp();
         // Instantiate the Main class
         $this->main = new Main();
     }
 
-    /**
-     * Test case to verify the default options returned by set_default_options method.
-     */
     public function test_default_options() {
+        // Define expected default options array
         $expected = array(
             'img_id' => [],
             'slider_heading' => [],
             'slider_desc' => []
         );
 
+        // Assert that the set_default_options method returns the expected default options
         $this->assertEquals($expected, $this->main->set_default_options());
     }
 
-    /**
-     * Test case to verify the _optionName property value.
-     */
     public function test_option_name() {
+        // Assert that the _optionName property is correctly set
         $this->assertEquals('uis_settings', $this->main->_optionName);
     }
 
-    /**
-     * Test case to verify the _optionGroup property value.
-     */
     public function test_option_group() {
+        // Assert that the _optionGroup property is correctly set
         $this->assertEquals('uis_options_group', $this->main->_optionGroup);
     }
 
-    /**
-     * Test case to verify menu registration and settings initialization.
-     */
     public function test_menu_register_settings() {
-        // Mock WordPress functions related to settings
+        // Mock the capability filter
         add_filter('option_page_capability_' . $this->main->_optionGroup, function () {
             return 'manage_options';
         });
 
-        // Register settings
+        // Call the menu_register_settings method
         $this->main->menu_register_settings();
 
         // Verify that the option has been added with the correct default values
         $this->assertEquals($this->main->_defaultOptions, get_option($this->main->_optionName));
 
         // Verify that the option group has been registered
-        $registered_settings = get_registered_settings();
-        $this->assertArrayHasKey($this->main->_optionGroup, $registered_settings);
+        global $new_whitelist_options;
+        $this->assertArrayHasKey($this->main->_optionGroup, $new_whitelist_options);
     }
 
-    /**
-     * Test case to verify the header template output.
-     */
     public function test_header_template() {
-        // Start output buffering to capture the output of the method
+        // Start output buffering to capture the output of the header_template method
         ob_start();
         $this->main->header_template();
         $output = ob_get_clean();
 
-        $this->assertContains('<div class="uis-settings-header">', $output);
-        $this->assertContains('<h2 class="title">Ultimate Image Slider Settings</h2>', $output);
+        // Assert that the output contains specific HTML elements expected in the header template
+        $this->assertStringContainsString('<div class="uis-settings-header">', $output);
+        $this->assertStringContainsString('<h2 class="title">Ultimate Image Slider Settings</h2>', $output);
     }
 }
-

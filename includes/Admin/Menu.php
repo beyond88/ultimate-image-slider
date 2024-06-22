@@ -40,7 +40,6 @@ class Menu {
         $capability = 'manage_options';
         $icon_url = '';
 
-        $settings = apply_filters('ultimate_image_slider_admin_menu', array());
-        $hook = add_menu_page(__('Ultimate Image Slider', 'ultimate-image-slider'), __('Ultimate Image Slider', 'ultimate-image-slider'), $capability, $parent_slug, [$this->main, 'plugin_page'], $icon_url, 30);
+        add_menu_page(__('Ultimate Image Slider', 'ultimate-image-slider'), __('Ultimate Image Slider', 'ultimate-image-slider'), $capability, $parent_slug, array($this->main, 'plugin_page'), $icon_url, 30);
     }
 }

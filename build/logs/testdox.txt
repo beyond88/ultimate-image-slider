@@ -1,0 +1,42 @@
+Main
+ [x] Default options
+ [x] Option name
+ [x] Option group
+ [x] Menu register settings
+ [x] Header template
+
+Menu (UltimateImageSlider\Admin\Menu)
+ [ ] Admin menu registration
+
+Plugin Meta
+ [x] Plugin action links
+ [ ] Plugin meta links
+
+Admin
+ [x] Admin initializes classes
+
+Assets
+ [x] Constructor adds actions
+ [x] Register assets
+ [x] Register admin assets
+
+Shortcode
+ [x] Shortcode initializes myslideshow
+
+My Slide Show
+ [x] Shortcode is registered
+ [x] Render shortcode
+ [x] Output method
+
+Frontend
+ [x] Frontend initializes shortcode
+
+Installer
+ [x] Run adds installed time
+ [x] Run sets version
+ [x] Run does not overwrite installed time
+
+Ultimate Image Slideri18n
+ [x] Load plugin textdomain action hook
+ [x] Load plugin textdomain method called
+

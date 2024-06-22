@@ -1,9 +1,9 @@
 <?php
 use UltimateImageSlider\Assets;
 
-class AssetsTest extends WP_UnitTestCase {
+class AssetsTest extends \WP_UnitTestCase {
 
-    public function setUp() {
+    public function setUp(): void {
         parent::setUp();
         
         // Define necessary constants

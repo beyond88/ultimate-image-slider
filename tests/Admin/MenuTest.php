@@ -1,58 +1,61 @@
 <?php
 namespace UltimateImageSlider\Admin;
 
-/**
- * Test class for testing the Menu class in Ultimate Image Slider plugin.
- */
-class MenuTest extends WP_UnitTestCase {
+use PHPUnit\Framework\TestCase;
 
-    /**
-     * Instance of the Menu class.
-     *
-     * @var Menu
-     */
+class MenuTest extends \WP_UnitTestCase {
+
     protected $menu;
+    protected $main;
 
-    /**
-     * Set up the test environment.
-     */
-    public function setUp() {
+    public function setUp(): void {
         parent::setUp();
 
-        // Mock the main file (Main class)
-        $this->main = $this->getMockBuilder('Main')
-                           ->disableOriginalConstructor()
+        // Mock the Main class
+        $this->main = $this->getMockBuilder(Main::class)
+                           ->setMethods(['plugin_page'])
                            ->getMock();
 
         // Instantiate the Menu class with the mocked Main class
         $this->menu = new Menu($this->main);
     }
 
-    /**
-     * Test case to verify the admin_menu method registration.
-     */
     public function test_admin_menu_registration() {
-        // Call the admin_menu method directly
-        $this->menu->admin_menu();
+        // Trigger the admin_menu action
+        do_action('admin_menu');
+
+        global $_registered_pages;
 
         // Check if the menu page is registered
-        global $menu;
         $menu_slug = 'ultimate-image-slider';
+        $found = false;
 
-        $registered_menu = false;
-        foreach ($menu as $menu_item) {
-            if ($menu_item[2] === $menu_slug) {
-                $registered_menu = true;
+        // Ensure $_registered_pages is populated
+        foreach ($_registered_pages as $page) {
+            if (is_array($page) && isset($page[2]) && $page[2] === $menu_slug) {
+                $found = true;
                 break;
             }
         }
 
-        $this->assertTrue($registered_menu, 'Menu page not registered.');
+        $this->assertTrue($found, 'Menu page not registered.');
+
+        // Find the registered page details
+        $registered_page = null;
+        foreach ($_registered_pages as $page) {
+            if (is_array($page) && isset($page[2]) && $page[2] === $menu_slug) {
+                $registered_page = $page;
+                break;
+            }
+        }
+
+        // Ensure $registered_page is not null before proceeding with assertions
+        $this->assertNotNull($registered_page, 'Registered page not found.');
 
         // Verify that the capability required is 'manage_options'
-        $this->assertEquals('manage_options', $menu[30][1]);
+        $this->assertEquals('manage_options', $registered_page[1]);
 
         // Verify that the menu page callback is set correctly
-        $this->assertEquals([$this->main, 'plugin_page'], $menu[30][2]);
+        $this->assertEquals([$this->main, 'plugin_page'], $registered_page[6]);
     }
 }

@@ -1,9 +1,9 @@
 <?php
 use UltimateImageSlider\Frontend\Shortcode;
 
-class ShortcodeTest extends WP_UnitTestCase {
+class ShortcodeTest extends \WP_UnitTestCase {
 
-    public function setUp() {
+    public function setUp(): void {
         parent::setUp();
 
         // Ensure the MySlideShow class exists

@@ -16,21 +16,8 @@ class Admin {
      */
     function __construct() {
         $main = new Admin\Main();
-        $this->dispatch_actions( $main );
 
         new Admin\Menu( $main );
         new Admin\PluginMeta();
-    }
-
-    /**
-     * Dispatch and bind actions
-     *
-     * @since   1.0.0
-     * @access  public
-     * @param   string
-     * @return  void
-     */
-    public function dispatch_actions( $main ) {
-
     }
 }
