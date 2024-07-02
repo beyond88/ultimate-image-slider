@@ -9,15 +9,12 @@
 }
 
 .img-fill img {
-  min-height: 100%;
-  min-width: 100%;
-  position: relative;
+  width: 100%;
+  height: auto;
   display: inline-block;
-  max-width: none;
 }
 
 *, *:before, *:after {
-  -webkit-box-sizing: border-box;
   box-sizing: border-box;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -30,10 +27,10 @@
 }
 
 /* ==== Slider Style === */
-
-.modern-slider{
+.modern-slider {
   position: relative;
 }
+
 .modern-slider .item .img-fill {
   height: 100vh;
   background: #000;
@@ -43,14 +40,19 @@
   position: absolute;
   width: 100%;
   height: 100%;
-  top: 0px;
-  left: 0px;
+  top: 0;
+  left: 0;
   background: rgba(0, 0, 0, 0.5);
-  line-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   text-align: center;
 }
 
 .modern-slider .item .img-fill img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
   filter: blur(5px);
 }
 
@@ -59,60 +61,96 @@
   vertical-align: middle;
 }
 
-.modern-slider .next-arrow {
+.modern-slider .next-arrow, .modern-slider .prev-arrow {
   position: absolute;
   top: 50%;
-  right: 0px;
+  transform: translateY(-50%);
   width: 45px;
   height: 45px;
   background: rgba(0, 0, 0, 0.5);
-  border: 0 none;
-  margin-top: -22.5px;
+  border: none;
   text-align: center;
-  cursor: pointer;
-  font: 20px/45px FontAwesome;
   color: #FFF;
   z-index: 5;
+  cursor: pointer;
 }
-.modern-slider .next-arrow:before {
-  content: "";
+
+.modern-slider .next-arrow {
+  right: 0;
 }
 
 .modern-slider .prev-arrow {
-  position: absolute;
-  top: 50%;
-  left: 0px;
-  width: 45px;
-  height: 45px;
-  background: rgba(0, 0, 0, 0.5);
-  border: 0 none;
-  margin-top: -22.5px;
-  text-align: center;
-  font: 20px/45px FontAwesome;
-  color: #FFF;
-  z-index: 5;
-  cursor: pointer;
+  left: 0;
 }
+
+.modern-slider .next-arrow:before {
+  content: "\2192";
+}
+
 .modern-slider .prev-arrow:before {
-  content: "";
+  content: "\2190";
 }
 
 .modern-slider .item h3 {
-  font: 30px/50px RalewayB;
+  font: bold 2rem Raleway, sans-serif;
   text-transform: uppercase;
   color: #FFF;
-  animation: fadeOutRight 1s both;
   margin: 0;
   padding: 0;
 }
 
 .modern-slider .item h5 {
-  margin: 0;
-  padding: 0;
-  font: 15px/30px RalewayR;
+  font: 1rem Raleway, sans-serif;
   color: #FFF;
   max-width: 600px;
   overflow: hidden;
-  height: 60px;
-  animation: fadeOutLeft 1s both;
+  height: auto;
+  margin: 0 auto;
+  padding: 0;
+  text-align: center;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+  .modern-slider .item .img-fill {
+    height: 60vh;
+  }
+
+  .modern-slider .item h3 {
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
+
+  .modern-slider .item h5 {
+    font-size: 0.875rem;
+    line-height: 1.5rem;
+    max-width: 80%;
+  }
+
+  .modern-slider .next-arrow, .modern-slider .prev-arrow {
+    width: 35px;
+    height: 35px;
+  }
+}
+
+@media (max-width: 480px) {
+  .modern-slider .item .img-fill {
+    height: 50vh;
+  }
+
+  .modern-slider .item h3 {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+  }
+
+  .modern-slider .item h5 {
+    font-size: 0.75rem;
+    line-height: 1.25rem;
+    max-width: 90%;
+  }
+
+  .modern-slider .next-arrow, .modern-slider .prev-arrow {
+    width: 30px;
+    height: 30px;
+  }
 }

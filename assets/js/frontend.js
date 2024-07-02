@@ -1,24 +1,28 @@
-(function ($) {
-	"use strict";
-
-  $(document).ready(function($){
-  
-    $(".modern-slider").slick({
-      autoplay:true,
-      autoplaySpeed:10000,
-      speed:600,
-      slidesToShow:2,
-      slidesToScroll:1,
-      pauseOnHover:false,
-      dots:false,
-      pauseOnDotsHover:true,
-      cssEase:'linear',
-     // fade:true,
-      draggable:true,
-      prevArrow:'<button class="prev-arrow"></button>',
-      nextArrow:'<button class="next-arrow"></button>', 
-    });
-    
+jQuery(document).ready(function($){
+  $('.modern-slider').slick({
+    dots: false, // Hide the dots
+    infinite: true,
+    speed: 300,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 1000,
+    responsive: [
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1
+        }
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1
+        }
+      }
+    ]
   });
+});
 
-})(jQuery);
