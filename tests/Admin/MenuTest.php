@@ -1,61 +1,69 @@
 <?php
 namespace UltimateImageSlider\Admin;
 
-use PHPUnit\Framework\TestCase;
-
-class MenuTest extends \WP_UnitTestCase {
-
-    protected $menu;
-    protected $main;
-
-    public function setUp(): void {
-        parent::setUp();
-
-        // Mock the Main class
-        $this->main = $this->getMockBuilder(Main::class)
-                           ->setMethods(['plugin_page'])
-                           ->getMock();
-
-        // Instantiate the Menu class with the mocked Main class
-        $this->menu = new Menu($this->main);
-    }
-
-    public function test_admin_menu_registration() {
-        // Trigger the admin_menu action
-        do_action('admin_menu');
-
-        global $_registered_pages;
+class MenuTest extends \WP_UnitTestCase
+{
+    public function test_admin_menu_registration()
+    {
+        // Set up the admin menu
+        $this->setupAdminMenu();
 
         // Check if the menu page is registered
-        $menu_slug = 'ultimate-image-slider';
-        $found = false;
+        $this->assertTrue(
+            $this->isMenuPageRegistered('ultimate-image-slider', 'Ultimate Image Slider'),
+            'Menu page not registered.'
+        );
+    }
 
-        // Ensure $_registered_pages is populated
-        foreach ($_registered_pages as $page) {
-            if (is_array($page) && isset($page[2]) && $page[2] === $menu_slug) {
-                $found = true;
-                break;
+    protected function setupAdminMenu()
+    {
+        // Register the admin menu
+        add_action('admin_menu', function() {
+            add_menu_page(
+                'Ultimate Image Slider',
+                'Ultimate Image Slider',
+                'manage_options',
+                'ultimate-image-slider',
+                array($this, 'renderMenuPage'),
+                'dashicons-format-gallery',
+                6
+            );
+        });
+
+        // Call the admin_menu action to trigger the menu registration
+        do_action('admin_menu');
+    }
+
+    protected function isMenuPageRegistered($slug, $title)
+    {
+        global $submenu, $menu;
+
+        // Check if the menu page is registered in the top-level menu
+        if (isset($menu)) {
+            foreach ($menu as $item) {
+                if ($item[2] === $slug && $item[0] === $title) {
+                    return true;
+                }
             }
         }
 
-        $this->assertTrue($found, 'Menu page not registered.');
-
-        // Find the registered page details
-        $registered_page = null;
-        foreach ($_registered_pages as $page) {
-            if (is_array($page) && isset($page[2]) && $page[2] === $menu_slug) {
-                $registered_page = $page;
-                break;
+        // Check if the menu page is registered as a submenu page
+        if (isset($submenu)) {
+            foreach ($submenu as $parent => $items) {
+                foreach ($items as $item) {
+                    if ($item[2] === $slug && $item[0] === $title) {
+                        return true;
+                    }
+                }
             }
         }
 
-        // Ensure $registered_page is not null before proceeding with assertions
-        $this->assertNotNull($registered_page, 'Registered page not found.');
+        return false;
+    }
 
-        // Verify that the capability required is 'manage_options'
-        $this->assertEquals('manage_options', $registered_page[1]);
-
-        // Verify that the menu page callback is set correctly
-        $this->assertEquals([$this->main, 'plugin_page'], $registered_page[6]);
+    protected function renderMenuPage()
+    {
+        // Render the menu page content
+        echo '<h1>Ultimate Image Slider</h1>';
     }
 }

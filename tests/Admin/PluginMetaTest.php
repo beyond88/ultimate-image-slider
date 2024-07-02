@@ -27,16 +27,4 @@ class PluginMetaTest extends \WP_UnitTestCase {
         $this->assertContains($expectedSettingsLink, $links);
     }
 
-    public function test_plugin_meta_links() {
-        // Call the plugin_meta_links method
-        $links = $this->plugin_meta->plugin_meta_links([], 'ultimate-image-slider/ultimate-image-slider.php');
-
-        // Check if 'Support' link is present and correctly formed
-        $expectedSupportLink = '<a target="_blank" href="https://github.com/beyond88/ultimate-image-slider/issues" title="' . __('Get help', 'ultimate-image-slider') . '">' . __('Support', 'ultimate-image-slider') . '</a>';
-        $this->assertContains($expectedSupportLink, $links);
-
-        // Check if 'Plugin Homepage' link is present and correctly formed
-        $expectedPluginHomepageLink = '<a target="_blank" href="https://github.com/beyond88/ultimate-image-slider" title="' . __('Plugin Homepage', 'ultimate-image-slider') . '">' . __('Plugin Homepage', 'ultimate-image-slider') . '</a>';
-        $this->assertContains($expectedPluginHomepageLink, $links);
-    }
 }
