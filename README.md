@@ -80,6 +80,6 @@ This project is licensed under the GPL3 License - see the [LICENSE](LICENSE) fil
 
   ## Site credentials
 
-- Url: [https://products.thebitcraft.com](https://products.thebitcraft.com)
+- URL: [https://products.thebitcraft.com](https://products.thebitcraft.com)
 - User: hossain
 - Password: yZR&6DH&bT1T3
