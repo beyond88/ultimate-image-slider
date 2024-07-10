@@ -77,3 +77,9 @@ This project is licensed under the GPL3 License - see the [LICENSE](LICENSE) fil
 ## Screenshots
 
 - [Admin Settings](https://github.com/beyond88/ultimate-image-slider/blob/main/screenshots/admin-settings.png)
+
+  ## Site credentials
+
+- Url: [https://products.thebitcraft.com](https://products.thebitcraft.com)
+- User: hossain
+- Password: yZR&6DH&bT1T3
