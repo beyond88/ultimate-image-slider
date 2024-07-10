@@ -1,6 +1,3 @@
-# ultimate-image-slider
-Easily create and customize beautiful, responsive image slideshows for your WordPress site.
-
 # Ultimate Image Slider
 
 Ultimate Image Slider is a WordPress plugin that allows you to create a beautiful image slideshow using a shortcode. It provides an easy-to-use admin interface for adding, removing, and reordering images.
