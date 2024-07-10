@@ -76,3 +76,7 @@ This project is licensed under the GPL3 License - see the [LICENSE](LICENSE) fil
 
 - [jQuery UI Sortable](http://jqueryui.com/demos/sortable/#connect-lists)
 - [slick.js](https://kenwheeler.github.io/slick/)
+
+## Screenshots
+
+- [Admin Settings](https://github.com/beyond88/ultimate-image-slider/blob/main/screenshots/admin-settings.png)
