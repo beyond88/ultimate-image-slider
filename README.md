@@ -16,7 +16,7 @@ Ultimate Image Slider is a WordPress plugin that allows you to create a beautifu
 
 1. Clone the repository to your WordPress plugins directory:
     ```bash
-    git clone https://github.com/yourusername/ultimate-image-slider.git
+    git clone https://github.com/beyond88/ultimate-image-slider.git
     ```
 2. Activate the plugin through the 'Plugins' menu in WordPress.
 
